@@ -1,0 +1,5 @@
+package com.msd.shopping.model;
+
+public class Order {
+
+}

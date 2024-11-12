@@ -1,0 +1,84 @@
+package com.msd.shopping.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.msd.shopping.dto.ProductDetails;
+import com.msd.shopping.model.Cart;
+import com.msd.shopping.model.Customer;
+import com.msd.shopping.model.Order;
+import com.msd.shopping.service.ShoppingService;
+
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
+
+
+@RestController
+@RequestMapping("/api/shoppingservice")
+public class ShoppingController {
+
+	@Autowired
+	private ShoppingService shoppingService;
+	
+	@CircuitBreaker(fallbackMethod = "defaultGreeting", name = "GetServiceInfo")
+	@GetMapping("/hello")
+	public String hello() {
+		return "Hello, Welcome to Shopping Service";
+	}
+
+	@CircuitBreaker(fallbackMethod = "defaultGreeting", name = "AddProduct")
+	@PostMapping("/products")
+	public ResponseEntity<String> addProductDetails(@RequestBody ProductDetails productDetails) {
+		String message = shoppingService.addProductDetails(productDetails);
+		return new ResponseEntity<>(message, HttpStatus.CREATED);
+
+	}
+
+	@CircuitBreaker(fallbackMethod = "defaultGreeting", name = "AddCustomer")
+	@PostMapping("/customer")
+	public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
+		return shoppingService.addCustomer(customer);
+	}
+
+	@CircuitBreaker(fallbackMethod = "defaultGreeting", name = "UpdateCart")
+	@PutMapping("/customer/{customerId}/cart")
+	public ResponseEntity<Cart> updateCart(@PathVariable String customerId, @RequestBody Cart cart) {
+		return shoppingService.updateCart(customerId, cart);
+	}
+
+	@CircuitBreaker(fallbackMethod = "defaultGreeting", name = "AddOrder")
+	@PostMapping("/customer/{customerId}/order")
+	public ResponseEntity<Order> addOrder(@PathVariable String customerId) {
+		return shoppingService.addOrder(customerId);
+	}
+
+	
+	@GetMapping("/customer/{customerId}/orders")
+	public ResponseEntity<Order> orders(@PathVariable String customerId) {
+		return shoppingService.orders(customerId);
+	}
+
+	// Circuit Breaker FallBack
+
+	public String defaultGreeting(RuntimeException e) {
+		return "Hello this is a default greeting Message Fall Back method (Static Data) !!!";
+	}
+
+//	public List<Product> defaultMethodforAllrequest(RuntimeException e) {
+//		return shoppingService.defaultMethodforAllrequest();
+//	}
+//	
+//	public String storeResponseFallback(String apiURL, String entityrequest, java.lang.Throwable t) {
+//        //log.error("Executing Fallback Method For General exceptions "+t.getMessage());
+//        return "Frm Fallback";// Making sure to send a blank response
+//    }
+
+}

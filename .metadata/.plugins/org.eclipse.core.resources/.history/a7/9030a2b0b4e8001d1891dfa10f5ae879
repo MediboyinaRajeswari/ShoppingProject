@@ -1,0 +1,12 @@
+package com.msd.shopping.model;
+
+import java.util.List;
+
+import com.msd.order.model.LineItem;
+
+public class Order {
+
+	private String orderId;
+
+	private List<LineItem> lineItems;
+}

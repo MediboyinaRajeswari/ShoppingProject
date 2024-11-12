@@ -1,0 +1,27 @@
+server.port=8080
+spring.application.name=Shopping-Service
+
+#Db
+spring.data.mongodb.host=localhost
+spring.data.mongodb.port=27017
+spring.data.mongodb.database=ShoppingDB
+
+#Eureka
+eureka.client.serviceUrl.defaultZone:http://localhost:8761/eureka
+eureka.client.register-with-eureka=true
+eureka.client.fetch-registry=true
+
+
+#Kafka
+spring.kafka.producer.bootstrap-servers = localhost:9092
+spring.kafka.producer.key-serializer = org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer = org.springframework.kafka.support.serializer.JsonSerializer
+
+#Circuit Breaker
+#resilience4j.circuitbreaker.instances.fo.sliding-window-type=TIME_BASED
+#resilience4j.circuitbreaker.instances.OrderDetails.sliding-window-size=5
+
+#resilience4j.circuitbreaker.configs.default.register-health-indicator=true
+#resilience4j.circuitbreaker.configs.default.permitted-number-of-calls-in-half-open-state=3
+#resilience4j.circuitbreaker.configs.default.sliding-window-type=TIME_BASED
+#resilience4j.circuitbreaker.configs.default.minimum-number-of-calls=3

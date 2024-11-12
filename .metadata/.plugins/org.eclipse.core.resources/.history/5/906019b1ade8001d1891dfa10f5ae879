@@ -1,0 +1,5 @@
+package com.msd.order.service;
+
+public class OrderService {
+
+}

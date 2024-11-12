@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 3 elements from project &apos;Cart-Service&apos;&#x0A;- Original project: &apos;Cart-Service&apos;&#x0A;- Original elements:&#x0A;     com.msd.cart.exception.AlreadyExists.java&#x0A;     com.msd.cart.exception.InvalidDataException.java&#x0A;     com.msd.cart.exception.NotExists.java" description="Delete elements" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.msd.cart.exception{NotExists.java" element2="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.msd.cart.exception{AlreadyExists.java" element3="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.msd.cart.exception{InvalidDataException.java" elements="3" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1681889548774" subPackages="false" version="1.0"/>
+</session>

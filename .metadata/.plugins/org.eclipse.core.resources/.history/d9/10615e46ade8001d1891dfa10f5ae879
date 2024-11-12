@@ -1,0 +1,5 @@
+package com.msd.order.model;
+
+public class LineItems {
+
+}

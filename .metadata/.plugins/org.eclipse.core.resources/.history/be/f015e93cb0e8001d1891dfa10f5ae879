@@ -1,0 +1,27 @@
+package com.msd.order.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.msd.order.model.Order;
+import com.msd.order.service.OrderService;
+
+@RestController
+@RequestMapping("/api")
+public class OrderController {
+	
+	@Autowired
+	OrderService orderService;
+	
+	
+	@PostMapping("/order")
+	public ResponseEntity<Order> addOrder(OrderDto orderDto){
+		
+		orderService.addOrder(orderDto.)
+		
+	}
+
+}

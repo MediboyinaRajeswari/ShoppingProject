@@ -1,0 +1,9 @@
+package com.msd.shopping.repository;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.msd.shopping.model.CustomerOrder;
+
+public interface CustomerOrderRepo extends MongoRepository<CustomerOrder, String> {
+
+}

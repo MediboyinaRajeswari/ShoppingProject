@@ -1,0 +1,9 @@
+
+˜
+java:S11920"dDefine a constant instead of duplicating this literal "Customer with this ID doesn't exist" 3 times.(ìÉ×ŸøÿÿÿÿHÀRCRITICALZ
+CODE_SMELL
+Œ
+java:S1488/"`Immediately return this expression instead of assigning it to the temporary variable "customer".(àÿÆžHÄRMINORZ
+CODE_SMELL
+Y
+java:S2201K"/The return value of "orElseThrow" must be used.(ìÉ×ŸøÿÿÿÿHÇRMAJORZBUG
